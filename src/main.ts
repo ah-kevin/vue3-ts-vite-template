@@ -12,6 +12,8 @@ import '@/styles/element-dark.scss'
 import '@/styles/element.scss'
 // main style
 import '@/styles/main.scss'
+// svg icons
+import 'virtual:svg-icons-register'
 
 import ElementPlus from 'element-plus'
 
