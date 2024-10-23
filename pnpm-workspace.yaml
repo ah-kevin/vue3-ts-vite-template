@@ -1,0 +1,9 @@
+packages:
+  - internal/*
+  - internal/lint-configs/*
+  - packages/*
+  - apps/*
+  - scripts/*
+  - docs
+  - playground
+catalog:

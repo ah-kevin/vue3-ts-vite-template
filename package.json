@@ -4,61 +4,63 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
+    "bootstrap": "pnpm install",
+    "build": "turbo-run build",
+    "check:circular": "novas check-circular",
+    "check:dep": "novas check-dep",
+    "check:type": "turbo run typecheck",
+    "clean": "novas clean",
+    "dev": "turbo-run dev",
+    "dev:all": "turbo run dev",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks"
+    "postinstall": "pnpm -r run stub --if-present",
+    "lint": "novas lint",
+    "prepare": "simple-git-hooks",
+    "pret": "prettier --cache --ignore-unknown",
+    "preview": "turbo-run preview",
+    "reinstall": "pnpm clean --del-lock && pnpm bootstrap"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged && pnpm type-check",
-    "commit-msg": "node scripts/verify-commit.js"
-  },
-  "lint-staged": {
-    "*.{js,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "eslint --fix",
-      "prettier --parser=typescript --write"
-    ]
-  },
-  "dependencies": {
-    "element-plus": "^2.7.3",
-    "pinia": "^2.1.7",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "pre-commit": "pnpm exec lint-staged",
+    "commit-msg": "pnpm exec commitlint"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.10.3",
-    "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^20.14.0",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "@vitejs/plugin-vue-jsx": "^4.0.0",
-    "@vue/eslint-config-prettier": "^9.0.0",
-    "@vue/eslint-config-typescript": "^13.0.0",
-    "@vue/tsconfig": "^0.5.1",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
-    "lint-staged": "^15.2.5",
-    "npm-run-all2": "^6.2.0",
-    "picocolors": "^1.0.1",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.6.1",
-    "sass": "^1.77.3",
+    "@types/node": "^22.7.9",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
+    "@vue/test-utils": "^2.4.6",
+    "@vue3-ts-vite-template/commitlint-config": "workspace:*",
+    "@vue3-ts-vite-template/eslint-config": "workspace:*",
+    "@vue3-ts-vite-template/novas": "workspace:*",
+    "@vue3-ts-vite-template/prettier-config": "workspace:*",
+    "@vue3-ts-vite-template/stylelint-config": "workspace:*",
+    "@vue3-ts-vite-template/tsconfig": "workspace:*",
+    "@vue3-ts-vite-template/turbo-run": "workspace:*",
+    "autoprefixer": "^10.4.20",
+    "cross-env": "^7.0.3",
+    "cspell": "^8.15.4",
+    "eslint": "^9.13.0",
+    "eslint-plugin-vue": "^9.29.1",
+    "happy-dom": "^15.7.4",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^15.2.10",
+    "playwright": "^1.48.1",
+    "rimraf": "^6.0.1",
     "simple-git-hooks": "^2.11.1",
-    "tailwindcss": "^3.4.3",
-    "typescript": "~5.6.2",
-    "vite": "^5.2.12",
-    "vite-plugin-html": "^3.2.2",
-    "vite-plugin-svg-icons": "^2.0.1",
-    "vite-plugin-vue-devtools": "^7.2.1",
-    "vue-tsc": "^2.0.19"
+    "tailwindcss": "^3.4.14",
+    "turbo": "^2.2.3",
+    "typescript": "^5.6.3",
+    "unbuild": "^2.0.0",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.3",
+    "vue": "^3.5.12",
+    "vue-tsc": "^2.1.6"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint": "*"
+      }
+    }
   }
 }

@@ -1,0 +1,21 @@
+{
+  "name": "@vue3-ts-vite-template/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ah-kevin/vue3-ts-vite-template.git"
+  },
+  "type": "module",
+  "files": [
+    "base.json",
+    "node.json",
+    "library.json",
+    "web-app.json",
+    "web.json"
+  ],
+  "dependencies": {
+    "vite": "^5.4.10"
+  }
+}

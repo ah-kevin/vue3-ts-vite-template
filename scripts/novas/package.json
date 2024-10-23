@@ -1,0 +1,31 @@
+{
+  "name": "@vue3-ts-vite-template/novas",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "bin": {
+    "novas": "./bin/novas.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "stub": "pnpm unbuild --stub"
+  },
+  "dependencies": {
+    "@vue3-ts-vite-template/node-utils": "workspace:*",
+    "cac": "^6.7.14",
+    "circular-dependency-scanner": "^2.2.2",
+    "depcheck": "^1.4.7",
+    "publint": "^0.2.10"
+  }
+}

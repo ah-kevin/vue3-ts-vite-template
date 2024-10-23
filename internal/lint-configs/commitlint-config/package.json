@@ -1,0 +1,28 @@
+{
+  "name": "@vue3-ts-vite-template/commitlint-config",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ah-kevin/nova-ai.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "default": "./index.mjs"
+    }
+  },
+  "main": "index.mjs",
+  "module": "index.mjs",
+  "bin": {
+    "commitlint": "bin/commitlint.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@vue3-ts-vite-template/node-utils": "workspace:*"
+  }
+}
